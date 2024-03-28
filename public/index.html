@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Luxury-vehicles-company</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+  </head>
+  <body>
+    <section style="background-image: url('./img/bg1.jpg')">
+      <!-- Body Background Change -->
+      <div class="bg"></div>
+
+      <!-- Top Header Desktop -->
+      <header>
+        <a href="#" class="logo"
+          ><img src="./img/logo.png" style="width: 250px"
+        /></a>
+
+        <ul class="navigation">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </header>
+
+      <!-- Top Header Mobile -->
+      <div class="topnav">
+        <a href="#" class="active"
+          ><img src="./img/logoRes.png" style="width: 200px"
+        /></a>
+
+        <div id="myLinks">
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">About</a>
+          <a href="#">Login</a>
+        </div>
+
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+
+      <!-- Left Content -->
+      <div class="content">
+        <div class="textbox">
+          <div>
+            <h2>Mercedes-Maybach GLS 600 SUV</h2>
+            <p>
+              First-class travel grows even finer in the 2024 Mercedes-Maybach
+              GLS 600. The standard-setting "S-Class of SUVs" is heightened with
+              an exquisitely furnished, expansively indulgent cabin and a
+              tapestry of luxury innovations.
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+        <div class="imgBox">
+          <model-viewer
+            src="models/mersedes-_benz_maybach_gls_600.glb"
+            class="fruits"
+            camera-controls
+            camera-orbit="90deg 90deg 6.5m"
+            shadow-intensity="1"
+            touch-action="pan-y"
+            disable-tap
+            environment-image="./img/test8.jpg"
+          ></model-viewer>
+        </div>
+      </div>
+
+      <!-- Right Content Cars -->
+      <ul class="thumb">
+        <li
+          class="active"
+          data-src="models/mersedes-_benz_maybach_gls_600.glb"
+          data-car-name="Mercedes-Maybach GLS 600 SUV"
+          data-description="First-class travel grows even finer in the 2024 Mercedes-Maybach GLS 600. The standard-setting 'S-Class of SUVs' is heightened with an exquisitely furnished, expansively indulgent cabin and a tapestry of luxury innovations."
+        >
+          <model-viewer
+            src="models/mersedes-_benz_maybach_gls_600.glb"
+            camera-orbit="90deg 90deg"
+          ></model-viewer>
+        </li>
+
+        <li
+          data-src="models/mersedes-benz_sl63_amg_free.glb"
+          data-car-name="AMG SL 63 Roadster"
+          data-description="A legend born not just to race but to set records, the SL has been winning the hearts of drivers for generations.  Now, the icon has been reborn, with 577 biturbo V8 horses and a fusion of innovative tech, impeccable luxury, and inimitable style."
+        >
+          <model-viewer
+            src="models/mersedes-benz_sl63_amg_free.glb"
+            camera-orbit="90deg 90deg"
+          ></model-viewer>
+        </li>
+
+        <li
+          data-src="models/mersedes-benz_s65_w222.glb"
+          data-car-name="Mercedes-Benz S 65 AMG W222"
+          data-description="The Mercedes-Benz W222 is the sixth generation of the S-Class produced from 2013 to 2020, the successor of the W221 S-Class and the predecessor of the W223 S-Class."
+        >
+          <model-viewer
+            src="models/mersedes-benz_s65_w222.glb"
+            camera-orbit="90deg 90deg"
+          ></model-viewer>
+        </li>
+
+        <li
+          data-src="models/mersedes-benz_g63_amg.glb"
+          data-car-name="AMG G 63 SUV"
+          data-description="With 577 handcrafted horses, the AMG G 63 is a legend raised to a higher power for a new era. Advanced luxury, unwavering confidence, and extensive individualization let you create a G that's at ease in any corner of the world."
+        >
+          <model-viewer
+            src="models/mersedes-benz_g63_amg.glb"
+            camera-orbit="90deg 90deg"
+          ></model-viewer>
+        </li>
+      </ul>
+
+      <!-- Social Media -->
+      <ul class="social">
+        <li>
+          <a href="#"><img src="./img/facebook.png" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="./img/twitter.png" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="./img/instagram.png" alt="" /></a>
+        </li>
+      </ul>
+    </section>
+
+    <script>
+      //change image, car name, and description on click
+      function imgSlider(anything, carName, description) {
+        const modelViewer = document.querySelector(".fruits");
+        const carNameElement = document.querySelector(".textbox h2");
+        const descriptionElement = document.querySelector(".textbox p");
+
+        modelViewer.src = anything;
+        carNameElement.textContent = carName;
+        descriptionElement.textContent = description;
+      }
+
+      // change background color
+      function changeBgColor(color) {
+        const bg = document.querySelector(".bg");
+        bg.style.background = color;
+      }
+
+      //add active class in selected thumbnails
+      let el = document.querySelectorAll(".thumb li");
+      for (let i = 0; i < el.length; i++) {
+        el[i].onclick = function () {
+          var c = 0;
+          while (c < el.length) {
+            el[c++].className = "check";
+          }
+          el[i].className = "check active";
+
+          // get data attributes for the clicked thumbnail
+          const thumbnailData = el[i].dataset;
+          // call imgSlider with the relevant data
+          imgSlider(
+            thumbnailData.src,
+            thumbnailData.carName,
+            thumbnailData.description
+          );
+        };
+      }
+
+      // Mobile Toggle Menu
+      function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+      // Get the model-viewer element
+      const modelViewer = document.querySelector("model-viewer");
+
+      // Function to update camera orbit based on screen width
+      function updateCameraOrbit() {
+        if (window.matchMedia("(max-width: 769px)").matches) {
+          // Change camera orbit for smaller screens
+          modelViewer.setAttribute("camera-orbit", "90deg 90deg 11m");
+        } else {
+          // Reset camera orbit for larger screens
+          modelViewer.setAttribute("camera-orbit", "90deg 90deg 6.5m");
+        }
+      }
+
+      // Call the function initially
+      updateCameraOrbit();
+
+      // Listen for window resize events
+      window.addEventListener("resize", updateCameraOrbit);
+    </script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBf9Tx1gMKwf0UiFDEG_qT3aCc9ymxL8tw",
+        authDomain: "luxury-vehicles-company.firebaseapp.com",
+        projectId: "luxury-vehicles-company",
+        storageBucket: "luxury-vehicles-company.appspot.com",
+        messagingSenderId: "160241890592",
+        appId: "1:160241890592:web:847a689095d29e4c23d345",
+        measurementId: "G-ZXVRPG06NS",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+  </body>
+</html>
